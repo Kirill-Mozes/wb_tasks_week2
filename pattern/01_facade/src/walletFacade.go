@@ -10,7 +10,7 @@ package main
 
 import "fmt"
 
-type walletFacade struct {
+type walletFacade struct { //simulation of a complex system
 	account      *account
 	wallet       *wallet
 	securityCode *securityCode
@@ -33,15 +33,15 @@ func newWalletFacade(accountID string, code int) *walletFacade {
 
 func (w *walletFacade) addMoneyToWallet(accountID string, securityCode int, amount int) error {
 	fmt.Println("Starting add money to wallet")
-	err := w.account.checkAccount(accountID)
+	err := w.account.checkAccount(accountID) // check acc name
 	if err != nil {
 		return err
 	}
-	err = w.securityCode.checkCode(securityCode)
+	err = w.securityCode.checkCode(securityCode) // check security code
 	if err != nil {
 		return err
 	}
-	w.wallet.creditBalance(amount)
+	w.wallet.creditBalance(amount) // top up your balance
 	w.notification.sendWalletCreditNotification()
 	w.ledger.makeEntry(accountID, "credit", amount)
 	return nil
@@ -49,16 +49,16 @@ func (w *walletFacade) addMoneyToWallet(accountID string, securityCode int, amou
 
 func (w *walletFacade) deductMoneyFromWallet(accountID string, securityCode int, amount int) error {
 	fmt.Println("Starting debit money from wallet")
-	err := w.account.checkAccount(accountID)
+	err := w.account.checkAccount(accountID) // check acc name
 	if err != nil {
 		return err
 	}
 
-	err = w.securityCode.checkCode(securityCode)
+	err = w.securityCode.checkCode(securityCode) // check security code
 	if err != nil {
 		return err
 	}
-	err = w.wallet.debitBalance(amount)
+	err = w.wallet.debitBalance(amount) // top down your balance
 	if err != nil {
 		return err
 	}
