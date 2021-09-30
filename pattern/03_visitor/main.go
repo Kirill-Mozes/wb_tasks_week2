@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// client code
 func main() {
 	square := &square{side: 2}
 	circle := &circle{radius: 3}

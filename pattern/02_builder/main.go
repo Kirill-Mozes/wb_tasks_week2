@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 // pattern builder
+// client code
 func main() {
 	normalBuilder := getBuilder("normal")
 	iglooBuilder := getBuilder("igloo")

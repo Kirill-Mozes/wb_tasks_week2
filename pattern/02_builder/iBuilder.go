@@ -1,5 +1,6 @@
 package main
 
+// builder interface
 type iBuilder interface {
 	setWindowType()
 	setDoorType()
