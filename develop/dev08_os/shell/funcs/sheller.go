@@ -90,5 +90,5 @@ func (s *Sheller) buildPrefix() (string, error) {
 	} else {
 		postfix = " " + path + " "
 	}
-	return `obakumen@myshell:~` + postfix, nil
+	return `myshell:~` + postfix, nil
 }
